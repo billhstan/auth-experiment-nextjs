@@ -39,7 +39,7 @@ const Login = () => {
             supabaseClient={supabaseClient}
             socialLayout='horizontal'
             socialButtonSize='xlarge'
-            redirectTo={'http://localhost:3000/traffic'}
+            redirectTo={'/traffic'}
           />
         </div>
       </>
