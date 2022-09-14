@@ -1,7 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import chalk from 'chalk';
-import util from 'util';
 export default function Index() {
   return (
 <div className="p-10">
