@@ -33,7 +33,7 @@ export default AbsenceLogs;
 export const getServerSideProps = async  () => {
     console.log('pages\\student\\absencelogs\\index.js>getServerSideProps>[started]');
   const { data: absenceLogs } = await axios.get(
-    'api/absencelogs'
+    '/api/absencelogs'
   );
   console.log(absenceLogs);
   return {
