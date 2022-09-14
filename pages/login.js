@@ -1,9 +1,13 @@
 import { Auth } from '@supabase/ui'
 import { useUser } from '@supabase/auth-helpers-react'
 import { supabaseClient } from '@supabase/auth-helpers-nextjs'
-import { useEffect, useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
+import ReactDOM from 'react-dom/client';
 const Login = () => {
+  //Need to hide the sign up link
+  const ref = useRef(null);
+
   const { isLoading, user, error } = useUser();
   const router = useRouter()
   useEffect(() => {
@@ -11,15 +15,35 @@ const Login = () => {
      router.push('/traffic');
     }
 }, [user])
+
+useEffect(() => {
+  //https://stackoverflow.com/questions/2694640/find-an-element-in-dom-based-on-an-attribute-value
+  //https://bobbyhadz.com/blog/react-get-element-by-id
+  const element1 = document.querySelectorAll('[href="#auth-sign-up"]');
+  console.log(element1);
+  if(element1.length==1){
+     element1[0].style.display='none';
+  }
+  // 👇️ (better) use a ref
+  const element2 = ref.current;
+  if(element2){
+    element2.style.display='none';
+  }
+}, []);
+
+
   if (!user)
     return (
       <>
       <div className="card">
       <a target="_blank" className="no-underline hover:underline ..."href="https://github.com/supabase/ui/issues/345" rel="noopener noreferrer">
-      Form does not reset after failed login/signup #345
+      Reference: Form does not reset after failed login/signup #345
       </a><br />
       <a target="_blank" className="no-underline hover:underline ..."href="https://github.com/supabase/auth-helpers/blob/main/examples/nextjs/pages/index.tsx" rel="noopener noreferrer">
-      Sample login form code in github written by supabase developers.
+      Reference: Sample login form code in github written by supabase developers.
+      </a><br />
+      <a target="_blank" className="no-underline hover:underline ..."href="/register" >
+        <span className="text-2xl">Register</span> (Programming note: Use this link to access the custom sign up form. I tried very hard to disable the built in Sign in link but failed.)
       </a>
       </div>
         <div className='flex flex-wrap w-6/12 justify-center'>
