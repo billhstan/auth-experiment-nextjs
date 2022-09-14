@@ -16,7 +16,6 @@
     "@supabase/ui": "^0.36.5",
     "app-root-path": "^3.1.0",
     "axios": "^0.27.2",
-    "chalk": "^5.0.1",
     "cookie": "^0.5.0",
     "daisyui": "^2.25.0",
     "dotenv": "^16.0.2",
@@ -25,8 +24,7 @@
     "react": "^18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.3.0",
-    "serverless-mysql": "^1.5.4",
-    "util": "^0.12.4"
+    "serverless-mysql": "^1.5.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.8",
