@@ -26,6 +26,11 @@ export default function Register() {
 
   return (
     <form onSubmit={registerUser}>
+      <div>
+             Use your <span className="text-2xl">ichat email account </span>to sign-up so that the system recognizes you as a &quot;student&quot; role user.<br />
+             Use your <span className="text-2xl">yahoo email account</span>  to sign-up so that the system recognizes you as a &quot;officer&quot; role user.
+      </div>
+      <div>
       <label htmlFor="email">Email</label>
       <input
         id="email"
@@ -44,7 +49,8 @@ export default function Register() {
         required
         
       />
-      <button type="submit">Register</button>
+      <button type="submit" className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Register</button>
+      </div>
     </form>
   );
 }
