@@ -33,7 +33,7 @@ export default AbsenceLogs;
 export const getServerSideProps = async  () => {
     console.log('pages\\student\\absencelogs\\index.js>getServerSideProps>[started]');
   const { data: absenceLogs } = await axios.get(
-    '/api/absencelogs'
+    'https://auth-experiment-nextjs-a23tb9zv1-billhstan-yahoocomsg.vercel.app/api/absencelogs'
   );
   console.log(absenceLogs);
   return {
