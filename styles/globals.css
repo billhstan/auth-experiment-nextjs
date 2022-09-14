@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* https://github.com/tailwindlabs/discuss/issues/41 */
+/* Note that, you need to customize your tailwind container class yourself */
+.container {
+    max-width: 100%;
+}
+.box {
+	@apply
+        grow
+        min-h-full
+		min-w-full
+		rounded
+        bg-indigo-500
+}
