@@ -84,7 +84,7 @@ export async function getServerSideProps(context) {
       endDateAndTime: absencelog[0].end_date
   };    
 
-    return { props: { absenceLogs:processedData } }
+    return { props: { absenceLog:processedData } }
 }
 
 export default AbsenceLogDetail;
