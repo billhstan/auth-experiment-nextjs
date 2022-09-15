@@ -35,7 +35,7 @@ useEffect(() => {
   if (!user)
     return (
       <>
-      <div className="card">
+      <div className="card text-blue-600">
       <a target="_blank" className="no-underline hover:underline ..."href="https://github.com/supabase/ui/issues/345" rel="noopener noreferrer">
       Reference: Form does not reset after failed login/signup #345
       </a><br />
@@ -43,7 +43,7 @@ useEffect(() => {
       Reference: Sample login form code in github written by supabase developers.
       </a><br />
       <a target="_blank" className="no-underline hover:underline ..."href="/register" >
-        <span className="text-2xl">Register</span> (Programming note: Use this link to access the custom sign up form. I tried very hard to disable the built in Sign in link but failed.)
+        <span className="text-2xl">Register</span> (Programming note: Use this link to access the custom sign up form. Don&quot;t use the sign up link below. I have tried very hard to disable the built in Sign in link but failed.)
       </a>
       </div>
         <div className='flex flex-wrap w-6/12 justify-center'>

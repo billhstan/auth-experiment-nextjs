@@ -26,8 +26,8 @@ export default function Register() {
 
   return (
     <form onSubmit={registerUser}>
-      <div>
-             Use your <span className="text-2xl">ichat email account </span>to sign-up so that the system recognizes you as a &quot;student&quot; role user.<br />
+      <div  className="card text-blue-600">
+             Use your <span className="text-2xl">ichat or hotmail email account </span>to sign-up so that the system recognizes you as a &quot;student&quot; role user.<br />
              Use your <span className="text-2xl">yahoo email account</span>  to sign-up so that the system recognizes you as a &quot;officer&quot; role user.
       </div>
       <div>

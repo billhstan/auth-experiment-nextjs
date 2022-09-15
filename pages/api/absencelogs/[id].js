@@ -1,7 +1,6 @@
 //file: <root>\api\absencelogs\[id].js
 import { supabase } from '../../../utils/supabase';
-import { supabaseServerClient } from '@supabase/auth-helpers-nextjs';
-
+import { supabaseServerClient } from '@supabase/supabase-auth-helpers/nextjs';
 const handler=async (req, res)=> {
   switch (req.method) {
     case 'GET':
@@ -26,7 +25,7 @@ const getAbsenceLog = async (req, res) => {
     //I have referenced some resources to quickly get the command working. 
     const { user } = await supabaseServerClient({ req, res }).auth.api.getUser(req.cookies["sb-access-token"]);
     //Reference: https://supabase.com/docs/reference/javascript/select
-    let { data: absencelog } = await supabase.from('absencelogs').select('*').eq("id", recordId);
+     let { data: absencelog } = await supabaseServerClient(context).from('absencelogs').select('*').eq("id", recordId);
     console.log('\\pages\\api\\absencelogs\\[id].js>getAbsenceLog  method>inspect [absencelog] after calling supabase\'s from().select().eq().');
     console.log(absencelog);
     const processedData =   {
