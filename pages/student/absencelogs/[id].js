@@ -2,7 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { Layout } from "components/Layout";
-
+import { supabaseServerClient } from '@supabase/supabase-auth-helpers/nextjs';
 function AbsenceLogDetail({ absenceLog }) {
   const router = useRouter();
   const localStartDateAndTime = new Date(absenceLog.startDateAndTime);
