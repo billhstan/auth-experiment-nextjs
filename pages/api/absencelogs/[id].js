@@ -25,7 +25,7 @@ const getAbsenceLog = async (req, res) => {
     //I have referenced some resources to quickly get the command working. 
     const { user } = await supabaseServerClient({ req, res }).auth.api.getUser(req.cookies["sb-access-token"]);
     //Reference: https://supabase.com/docs/reference/javascript/select
-     let { data: absencelog } = await supabaseServerClient(context).from('absencelogs').select('*').eq("id", recordId);
+     let { data: absencelog } = await supabaseServerClient({req,res}).from('absencelogs').select('*').eq("id", recordId);
     console.log('\\pages\\api\\absencelogs\\[id].js>getAbsenceLog  method>inspect [absencelog] after calling supabase\'s from().select().eq().');
     console.log(absencelog);
     const processedData =   {
