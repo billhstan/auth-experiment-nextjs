@@ -74,7 +74,7 @@ export async function getServerSideProps(context) {
     const {query}=context;
   
     const { user } = await supabaseServerClient(context).auth.api.getUser(context.req.cookies["sb-access-token"]);
-    let { data: absencelog } = await supabaseServerClient({req,res}).from('absencelogs').select('*').eq("id", query.id);
+    let { data: absencelog } = await supabaseServerClient(context).from('absencelogs').select('*').eq("id", query.id);
     console.log('\\pages\\absencelogs\\[id].js>getServerSideProps  method>inspect [absencelog] after calling supabaseServerClient\'s from().select().eq().');
     console.log(absencelog);
     const processedData =   {
