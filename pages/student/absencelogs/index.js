@@ -1,6 +1,7 @@
 import axios from "axios";
-
+import {supabaseServerClient} from '@supabase/auth-helpers-nextjs';
 import { AbsenceLogCard } from "components/AbsenceLogCard";
+import { withPageAuth, getUser } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from "next/router";
 function AbsenceLogs({ absenceLogs = [] }) {
   const renderAbsenceLogs = () => {
@@ -29,15 +30,42 @@ function AbsenceLogs({ absenceLogs = [] }) {
 }
 
 export default AbsenceLogs;
-
+/*
 export const getServerSideProps = async  () => {
     console.log('pages\\student\\absencelogs\\index.js>getServerSideProps>[started]');
-  const { data: absenceLogs } = await axios.get(
-    'https://auth-experiment-nextjs-a23tb9zv1-billhstan-yahoocomsg.vercel.app/api/absencelogs'
+    const { data: absenceLogs } = await axios.get(
+    '/api/absencelogs'
   );
   console.log(absenceLogs);
   return {
     props: {absenceLogs}, // will be passed to the page component as props
   }
-  }
+  }*/
+/*
+export const getServerSideProps = withPageAuth({
+  redirectTo: '/',
+  async getServerSideProps(context) {
+    // Run queries with RLS on the server
+    const { data:absenceLogs } = await supabaseServerClient(context).from('absencelogs').select('*');
+    console.log('pages\\student\\absencelogs\\index.js>getServerSideProps>inspect the [absenceLogs] variable after calling supabaseServerClient\'s method');
+    console.log(absenceLogs);
+    return { props: { absenceLogs } }
+  },
+})*/
 
+export async function getServerSideProps(context) {
+  console.log('context.res', context.res);
+    // Run queries with RLS on the server
+    const { user } = await supabaseServerClient(context).auth.api.getUser(context.req.cookies["sb-access-token"]);
+    const { data:absenceLogs } = await supabaseServerClient(context).from('absencelogs').select('*').match({created_by:user.id});
+    console.log('pages\\student\\absencelogs\\index.js>getServerSideProps>inspect the [absenceLogs] variable after calling supabaseServerClient\'s method');
+    console.log(absenceLogs);
+    const processedData = absenceLogs.map((element)=>{return {
+      absenceLogId: element.id,
+      description:element.description,
+      startDateAndTime : element.start_date,
+      endDateAndTime: element.end_date
+  }});
+
+    return { props: { absenceLogs:processedData } }
+}

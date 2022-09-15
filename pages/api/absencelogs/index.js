@@ -1,12 +1,12 @@
 import { supabase } from '../../../utils/supabase';
-import { supabaseServerClient } from '@supabase/auth-helpers-nextjs';
+import { supabaseServerClient } from '@supabase/supabase-auth-helpers/nextjs';
 
 export default async function handler(req, res) {
   switch (req.method) {
     case 'GET':
       return await getAbsenceLogs(req, res);
     case 'POST':
-      return await saveAbsenceLog(req, res);
+      return await createAbsenceLog(req, res);
     default:
       return res.status(400).send('Method not allowed');
   }
@@ -16,7 +16,7 @@ const getAbsenceLogs = async (req, res) => {
   try {
     console.log('api/absencelogs/index.js>>>getAbsenceLogs>>>[started]');
     let { data: absenceLogs } = await supabase
-    .from('absencelogs')
+    .from('absencelogs');
     const processedData = absenceLogs.map((element)=>{return {
         absenceLogId: element.id,
         description:element.description,

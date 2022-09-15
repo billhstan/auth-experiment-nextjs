@@ -8,7 +8,7 @@ function getEmailDomain(email){
 function decideUserRole(email){
   const domain =getEmailDomain(email);
   let role=null;
-  if (domain==='ichat.sp.edu.sg'){
+  if (domain==='ichat.sp.edu.sg'||(domain==='hotmail.com')){
     role = 'student';
   }
   if ((domain==='yahoo.com')||(domain==='yahoo.com.sg')){
