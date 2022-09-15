@@ -55,6 +55,7 @@ In simple terms, getServerSideProps enables a page to render server-side.
   The getServerSideProps method renders your client-side page in server-side and 
   returns a hydrated SEO-friendly HTML document to the browser.
 */
+/*
 export const getServerSideProps = async ({ query }) => {
   const { data: absenceLog} = await axios.get(
     'http://localhost:3000/api/absencelogs/' + query.id
@@ -67,6 +68,23 @@ export const getServerSideProps = async ({ query }) => {
       absenceLog,
     },
   };
-};
+};*/
+
+export async function getServerSideProps(context) {
+    const {query}=context;
+  
+    const { user } = await supabaseServerClient(context).auth.api.getUser(context.req.cookies["sb-access-token"]);
+    let { data: absencelog } = await supabaseServerClient({req,res}).from('absencelogs').select('*').eq("id", query.id);
+    console.log('\\pages\\absencelogs\\[id].js>getServerSideProps  method>inspect [absencelog] after calling supabaseServerClient\'s from().select().eq().');
+    console.log(absencelog);
+    const processedData =   {
+      absenceLogId: absencelog[0].id,
+      description:absencelog[0].description,
+      startDateAndTime : absencelog[0].start_date,
+      endDateAndTime: absencelog[0].end_date
+  };    
+
+    return { props: { absenceLogs:processedData } }
+}
 
 export default AbsenceLogDetail;

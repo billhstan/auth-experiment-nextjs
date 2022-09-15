@@ -76,6 +76,11 @@ export default  function AddAbsenceLog() {
         className="bg-white dark:bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSubmit}
       >
+              <div  className="card text-blue-600">
+             System recognizes 2022-01-01 00:00 as 2022-01-01 12 midnight but the record will be saved in UTC equivalent<br />
+             If you want to create a 2 day MC record, test data can be 2022-02-02 00:00 to 2022-02-03 23:59<br />
+             The project does not cover date-time manipulation code. The project totally focuses on Authentication and Authorization logic.
+      </div>
             <h1 className="block w-full text-center text-grey-darkest mb-6 text-2xl text-stone-400">Create absence log</h1>
         <div className="mb-4">
           <label
