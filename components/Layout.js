@@ -26,7 +26,14 @@ export default function Layout({title, children }) {
         <main  className="item   h-full container  bg-zinc-100 mx-auto mt-6 px-4 border-5 border-black">
           {/*  https://smartcodehelper.com/2021/12/17/tailwind-3-column-grid-with-custom-width/ */}
 <div className="grid h-full auto-cols-auto grid-cols-10/80/10 gap-2">
-	<div className="box border-2">1</div>
+	<div className="border-2 border-black">
+  <h6 class="font-medium leading-tight text-base mt-0 mb-2 text-blue-600">
+  Left section (intentionally left empty)
+</h6>
+<span class="text-xs font-semibold inline-block py-1 my-1 px-2  rounded text-emerald-600 bg-emerald-200  last:mr-0 mr-1">
+  intentionally left empty
+</span>
+  </div>
 	<div className="grid border-2 place-items-center ">{children}</div>
 	<div className="border-2 ">3</div>
 </div>
