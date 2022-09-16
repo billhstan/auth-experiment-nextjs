@@ -3,7 +3,7 @@ import { supabase } from 'utils/supabase';
 
 import { User, withPageAuth, getUser } from '@supabase/auth-helpers-nextjs'
 
-// Supports both a single string value or an array of matchers
+// Supports both a single string value or an array of matchers  
 export const config = {
     matcher: [ '/student','/officer/:path*','/admin/:path*','/student/:path*','/traffic'],
   }
